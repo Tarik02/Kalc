@@ -1,0 +1,30 @@
+{
+  "name": "kalc",
+  "version": "1.0.0",
+  "description": "Calculator",
+  "main": "background.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "watch": "webpack --watch"
+  },
+  "author": "Tarik02",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "webpack": "^2.5.1"
+  },
+  "dependencies": {
+    "libmathjs": "^1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Tarik02/Kalc.git"
+  },
+  "keywords": [
+    "calculator"
+  ],
+  "bugs": {
+    "url": "https://github.com/Tarik02/Kalc/issues"
+  },
+  "homepage": "https://github.com/Tarik02/Kalc#readme"
+}

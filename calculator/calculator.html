@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="calculator.css">
+		<!--<script src="jquery-3.2.1.min.js"></script>-->
+		<script src="jquery-3.2.1.js"></script>
+	</head>
+	<body>
+		<div id="topbar">
+			<a href="" class="close clickable">&#10006;</a>
+		</div>
+		<ul id="pages">
+			<li id="main">
+				<!--<input type="text" class="main-input">-->
+				<canvas class="main-input"></canvas>
+
+				<table class="buttons" cellspacing="0" cellpadding="0" border="0">
+					<tr class="row">
+						<td class="column"><a data-key="BACK_SPACE" href="" class="button clickable" id="button-backspace"><span>&larr;</span></a></td>
+						<td class="column"><a data-key="" href="" class="button clickable" id="button-stack-result"><span>&uarr;</span></a></td>
+						<td class="column"><a data-key="BACK_QUOTE" href="" class="button clickable" id="button-panel"><span>&darr;</span></a></td>
+						<td class="column"><a data-key="ENTER" href="" class="button clickable" id="button-result"><span>&rarr;</span></a></td>
+						<td class="column"><a data-key="EQUALS,EQUALS2" href="" class="button clickable" id="button-eq"><span>=</span></a></td>
+					</tr>
+					<tr class="row">
+						<td class="column"><a data-key="7,NUMPAD7" href="" class="button clickable" id="button-7"><span>7</span></a></td>
+						<td class="column"><a data-key="8,NUMPAD8" href="" class="button clickable" id="button-8"><span>8</span></a></td>
+						<td class="column"><a data-key="9,NUMPAD9" href="" class="button clickable" id="button-9"><span>9</span></a></td>
+						<td class="column"><a data-key="ADD,SHIFT:EQUALS2" href="" class="button clickable" id="button-add"><span>+</span></a></td>
+						<td class="column"><a data-key="SHIFT:9" href="" class="button clickable" id="button-open-scope"><span>(</span></a></td>
+					</tr>
+					<tr class="row">
+						<td class="column"><a data-key="4,NUMPAD4" href="" class="button clickable" id="button-4"><span>4</span></a></td>
+						<td class="column"><a data-key="5,NUMPAD5" href="" class="button clickable" id="button-5"><span>5</span></a></td>
+						<td class="column"><a data-key="6,NUMPAD6" href="" class="button clickable" id="button-6"><span>6</span></a></td>
+						<td class="column"><a data-key="SUBTRACT,MINUS" href="" class="button clickable" id="button-sub"><span>-</span></a></td>
+						<td class="column"><a data-key="SHIFT:0" href="" class="button clickable" id="button-close-scope"><span>)</span></a></td>
+					</tr>
+					<tr class="row">
+						<td class="column"><a data-key="1,NUMPAD1" href="" class="button clickable" id="button-1"><span>1</span></a></td>
+						<td class="column"><a data-key="2,NUMPAD2" href="" class="button clickable" id="button-2"><span>2</span></a></td>
+						<td class="column"><a data-key="3,NUMPAD3" href="" class="button clickable" id="button-3"><span>3</span></a></td>
+						<td class="column"><a data-key="MULTIPLY" href="" class="button clickable" id="button-mul"><span>*</span></a></td>
+						<td class="column"><a data-key="X" href="" class="button clickable" id="button-x"><span>X</span></a></td>
+					</tr>
+					<tr class="row">
+						<td class="column" colspan="2"><a data-key="0,NUMPAD0" href="" class="button clickable" id="button-0"><span>0</span></a></td>
+						<td class="column"><a data-key="DECIMAL,COMMA,PERIOD" href="" class="button clickable" id="button-dot"><span>.</span></a></td>
+						<td class="column"><a data-key="DIVIDE,SLASH" href="" class="button clickable" id="button-div"><span>/</span></a></td>
+						<td class="column"><a data-key="Y" href="" class="button clickable" id="button-y"><span>Y</span></a></td>
+					</tr>
+				</table>
+
+				<table class="buttons bottom-buttons" cellspacing="0" cellpadding="0" border="0">
+					<tr class="row">
+						<td class="column"><a href="" class="button clickable function" id="button-cos"><span>cos</span></a></td>
+						<td class="column"><a href="" class="button clickable" id="button-square"><span>a<sup>2</sup></span></a></td>
+						<td class="column"><a href="" class="button clickable"><span></span></a></td>
+						<td class="column"><a href="" class="button clickable"><span></span></a></td>
+						<td class="column"><a href="" class="button clickable"><span></span></a></td>
+					</tr>
+					<tr class="row">
+						<td class="column"><a href="" class="button clickable function" id="button-sin"><span>sin</span></a></td>
+						<td class="column"><a href="" class="button clickable" id="button-powern"><span>a<sup>n</sup></span></a></td>
+						<td class="column"><a href="" class="button clickable"><span></span></a></td>
+						<td class="column"><a href="" class="button clickable"><span></span></a></td>
+						<td class="column"><a href="" class="button clickable"><span></span></a></td>
+					</tr>
+					<tr class="row">
+						<td class="column"><a href="" class="button clickable function" id="button-tg"><span>tg</span></a></td>
+						<td class="column"><a href="" class="button clickable" id="button-rootsquare"><span>&radic;</span></a></td>
+						<td class="column"><a href="" class="button clickable"><span></span></a></td>
+						<td class="column"><a href="" class="button clickable"><span></span></a></td>
+					</tr>
+					<tr class="row">
+						<td class="column"><a href="" class="button clickable function" id="button-ctg"><span>ctg</span></a></td>
+						<td class="column"><a href="" class="button clickable" id="button-rootn"><span style="position: relative;"><span style="position: absolute; font-size: .6em; top: -10px;">n</span>&radic;</span></a></td>
+						<td class="column"><a href="" class="button clickable"><span></span></a></td>
+						<td class="column"><a href="" class="button clickable"><span></span></a></td>
+					</tr>
+				</table>
+			</li>
+		</ul>
+	</body>
+
+	<script src="bundle.js"></script>
+</html>
