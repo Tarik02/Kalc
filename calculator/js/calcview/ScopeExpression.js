@@ -1,9 +1,8 @@
-import Expression from './Expression';
+import ChildableExpression from './ChildableExpression';
 
-export default class ScopeExpression extends Expression {
+export default class ScopeExpression extends ChildableExpression {
 	constructor() {
 		super();
-		this._children = [];
 	}
 
 	/**
@@ -18,7 +17,7 @@ export default class ScopeExpression extends Expression {
 		}
 
 		for (let child of this._children) {
-			child.measure(canvas, {x: this._pos.x + this._pos.width, y: this._pos.y, width: 0});
+			child.measure(canvas, {x: this._pos.x + this._pos.width, y: this._pos.y, width: 0, height: this._pos.height});
 			this._pos.width += child._pos.width;
 		}
 

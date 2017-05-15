@@ -31,6 +31,8 @@ $.each($('.buttons'), (i, buttons) => {
 	$(window).resize(() => numpad.resize(windowHeight() - 50 - 50));
 });
 
+$(window).resize(() => calcView.handleResize());
+
 $('#topbar .close').click(event => {
 	event.preventDefault();
 
