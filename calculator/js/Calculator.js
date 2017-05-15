@@ -3,7 +3,7 @@ import Numpad from './Numpad';
 import NumpadGroup from './NumpadGroup';
 import Pages from './Pages';
 
-const currentWindow = chrome && chrome.app ? chrome.app.window.current() : null;
+const currentWindow = chrome && chrome.app && chrome.app.window ? chrome.app.window.current() : null;
 
 const pages = new Pages('#pages');
 const calcView = new CalcView($('.main-input').get(0));
