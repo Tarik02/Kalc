@@ -4,13 +4,14 @@ export default class Numpad {
 		this._element = element = $(element);
 		this._group = group;
 
-		$(window).resize(() => this._resize);
-		this._resize();
+		this.resize();
 
 		if (this._group) {
 			this._group.add(this);
 
-			$.each(this._element.find('.button'), (i, button) => {
+			let $buttons = this._element.find('.button');
+			$buttons.on('contextmenu', event => event.preventDefault());
+			$.each($buttons, (i, button) => {
 				let $button = $(button);
 				let buttonName = '';
 
@@ -26,7 +27,8 @@ export default class Numpad {
 		}
 	}
 
-	_resize() {
+	resize(numpadHeight) {
+		this._height = numpadHeight || this._height;
 		let height = this._height / 5;
 
 		let $buttons = this._element.find('tbody');

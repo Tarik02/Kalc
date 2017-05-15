@@ -3,7 +3,8 @@ import Numpad from './Numpad';
 import NumpadGroup from './NumpadGroup';
 import Pages from './Pages';
 
-const currentWindow = chrome.app.window.current();
+const currentWindow = chrome && chrome.app ? chrome.app.window.current() : null;
+
 const pages = new Pages('#pages');
 const calcView = new CalcView($('.main-input').get(0));
 const numpadGroup = new NumpadGroup({
@@ -17,12 +18,24 @@ const numpadGroup = new NumpadGroup({
 	}
 });
 
+function windowHeight() {
+	if (currentWindow) {
+		return currentWindow.innerBounds.height;
+	} else {
+		return $(window).height();
+	}
+}
+
 $.each($('.buttons'), (i, buttons) => {
-	new Numpad(buttons, currentWindow.innerBounds.height - 50 - 50, numpadGroup);
+	let numpad = new Numpad(buttons, windowHeight() - 50 - 50, numpadGroup);
+	$(window).resize(() => numpad.resize(windowHeight() - 50 - 50));
 });
 
-$('#topbar .close').click(() => {
+$('#topbar .close').click(event => {
 	event.preventDefault();
 
-	chrome.app.window.current().close();
-});
+	if (currentWindow) {
+		currentWindow.close();
+	}
+}).on('contextmenu', event => event.preventDefault());
+
