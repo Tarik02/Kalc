@@ -42,4 +42,13 @@ export default class ChildableExpression extends Expression {
 	children() {
 		return this._children;
 	}
+
+	_child(index, value = null) {
+		if (value !== null) {
+			this._children[index] = value;
+			return value;
+		}
+
+		return this._children[index];
+	}
 }

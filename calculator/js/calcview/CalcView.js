@@ -2,6 +2,7 @@ import ChildableExpression from './ChildableExpression';
 
 import NumberExpression from './NumberExpression';
 import ScopeExpression from './ScopeExpression';
+import RootExpression from './RootExpression';
 
 export default class CalcView {
 	constructor(canvas) {
@@ -39,8 +40,11 @@ export default class CalcView {
 		n._value = '+';
 		this._root._children.push(n);
 
-		n = new NumberExpression();
-		n._value = '123';
+		n = new RootExpression();
+		let r = new RootExpression();
+		n.index(r);
+		r = new RootExpression();
+		n.radicand(r);
 		this._root._children.push(n);
 	}
 
@@ -86,6 +90,8 @@ export default class CalcView {
 		context.clearRect(0, 0, width, height);
 		context.fillStyle = 'rgb(150, 150, 150)';
 		context.strokeStyle = 'rgb(150, 150, 150)';
+		context.lineWidth = 2;
+		context.lineJoin = 'round';
 		context.font = '25px monospace';
 		context.textAlign = 'left';
 		context.textBaseline = 'top';
@@ -123,6 +129,6 @@ export default class CalcView {
 	}
 
 	static _in(position, box) {
-		return position.x >= box.x && /*position.y >= box.y &&*/ position.x <= box.x + box.width/* && position.y <= box.y + box.height*/;
+		return position.x >= box.x && position.y >= box.y && position.x <= box.x + box.width && position.y <= box.y + box.height;
 	}
 }
