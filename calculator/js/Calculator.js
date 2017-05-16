@@ -27,8 +27,9 @@ function windowHeight() {
 }
 
 $.each($('.buttons'), (i, buttons) => {
-	let numpad = new Numpad(buttons, windowHeight() - 50 - 50, numpadGroup);
-	$(window).resize(() => numpad.resize(windowHeight() - 50 - 50));
+	let heightM = currentWindow ? 100 : 50;
+	let numpad = new Numpad(buttons, windowHeight() - heightM, numpadGroup);
+	$(window).resize(() => numpad.resize(windowHeight() - heightM));
 });
 
 $(window).resize(() => calcView.handleResize());
@@ -40,4 +41,9 @@ $('#topbar .close').click(event => {
 		currentWindow.close();
 	}
 }).on('contextmenu', event => event.preventDefault());
+
+if (!currentWindow) {
+	$('#topbar').css('display', 'none');
+	$('#pages').css('top', '0');
+}
 
