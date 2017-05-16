@@ -15,7 +15,7 @@ export default class Expression {
 	 * @param {CanvasRenderingContext2D} canvas
 	 * @param relative
 	 */
-	measure(canvas, relative) {
+	measure(canvas, relative = null) {
 		if (relative) {
 			this._pos = relative;
 		} else {

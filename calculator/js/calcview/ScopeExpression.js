@@ -8,11 +8,12 @@ export default class ScopeExpression extends ChildableExpression {
 	/**
 	 * @param {CanvasRenderingContext2D} canvas
 	 * @param relative
+	 * @param {Boolean} root
 	 */
-	measure(canvas, relative) {
+	measure(canvas, relative = null, root = false) {
 		super.measure(canvas, relative);
 
-		if (relative) {
+		if (!root) {
 			this._pos.width += canvas.measureText('(').width;
 		}
 
@@ -21,16 +22,16 @@ export default class ScopeExpression extends ChildableExpression {
 			this._pos.width += child._pos.width;
 		}
 
-		if (relative) {
+		if (!root) {
 			this._pos.width += canvas.measureText(')').width;
 		}
 	}
 
 	/**
 	 * @param {CanvasRenderingContext2D} canvas
-	 * @param {Boolean?} root
+	 * @param {Boolean} root
 	 */
-	draw(canvas, root) {
+	draw(canvas, root = false) {
 		super.draw(canvas);
 
 		if (!root) {
@@ -38,8 +39,9 @@ export default class ScopeExpression extends ChildableExpression {
 			canvas.translate(canvas.measureText('(').width, 0);
 		}
 
-		for (let child of this._children)
+		for (let child of this._children) {
 			child.draw(canvas);
+		}
 
 		if (!root) {
 			canvas.fillText(')', 0, 0);

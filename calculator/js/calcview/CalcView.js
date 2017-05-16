@@ -41,9 +41,11 @@ export default class CalcView {
 		this._root._children.push(n);
 
 		n = new RootExpression();
-		let r = new RootExpression();
+		let r = new NumberExpression();
+		r._value = '';
 		n.index(r);
-		r = new RootExpression();
+		r = new NumberExpression();
+		r._value = '25';
 		n.radicand(r);
 		this._root._children.push(n);
 	}
@@ -71,7 +73,7 @@ export default class CalcView {
 
 		let exp = this.find({
 			x: x - this._beginX,
-			y: y - this._beginY
+			y: y - this._beginY + this._root.position().height / 2
 		});
 
 		this._selected = exp;
@@ -97,7 +99,7 @@ export default class CalcView {
 		context.textBaseline = 'top';
 		context.textBaseline = 'middle';
 
-		this._root.measure(context);
+		this._root.measure(context, {x: 0, y: 0, width: 0, height: 25}, true);
 
 		context.save();
 		context.translate(this._beginX = width - this._root._pos.width - 10, this._beginY = height / 2);

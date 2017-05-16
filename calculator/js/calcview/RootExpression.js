@@ -23,7 +23,7 @@ export default class RootExpression extends ChildableExpression {
 	 * @param {CanvasRenderingContext2D} canvas
 	 * @param relative
 	 */
-	measure(canvas, relative) {
+	measure(canvas, relative = null) {
 		super.measure(canvas, relative);
 
 		const scale = this._pos.height / 25;
@@ -38,9 +38,9 @@ export default class RootExpression extends ChildableExpression {
 
 	/**
 	 * @param {CanvasRenderingContext2D} canvas
-	 * @param {Boolean?} root
+	 * @param {Boolean} root
 	 */
-	draw(canvas, root) {
+	draw(canvas, root = false) {
 		super.draw(canvas);
 
 		const scale = this._pos.height / 25;

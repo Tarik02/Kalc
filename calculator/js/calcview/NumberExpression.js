@@ -10,7 +10,7 @@ export default class NumberExpression extends Expression {
 	 * @param {CanvasRenderingContext2D} canvas
 	 * @param relative
 	 */
-	measure(canvas, relative) {
+	measure(canvas, relative = null) {
 		super.measure(canvas, relative);
 
 		this._pos.width += canvas.measureText(this._value).width;
